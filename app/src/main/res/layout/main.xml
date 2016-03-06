@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:orientation="vertical">
+
+	<Button
+		android:onClick="onCopiarButtonClick"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="Copiar"
+		android:background="#50B817"/>
+
+	<Button
+		android:onClick="onRestaurarButtonClick"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="Restaurar"
+		android:background="#BC382F"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="wrap_content"
+		android:text="Esta app permite copiar y restablecer la partición NVRAM (IMEI, MAC del WiFi y del Bluetooth)."/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:text="Unicamente para Bmobile AX1030, otros modelos no testeados. Me reservo el derecho de ignorar a otros modelos."/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:text="Por favor asegurese que el archivo 'nvram-ax1030.img' se encuentre en la raíz de la memoria principal /sdcard"/>
+
+</LinearLayout>
+
