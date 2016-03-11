@@ -5,37 +5,59 @@
 	android:layout_width="match_parent"
 	android:orientation="vertical">
 
+	<TextView
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"
+		android:text="Sistema NVRAM/NVDATA"
+		android:gravity="center_horizontal"/>
+
 	<Button
-		android:onClick="onCopiarButtonClick"
+		android:onClick="onCopiarNVRAMButtonClick"
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:text="Copiar"
+		android:text="HARDWARE IMEI COPIAR"
 		android:background="#50B817"/>
 
 	<Button
-		android:onClick="onRestaurarButtonClick"
+		android:onClick="onRestaurarNVRAMButtonClick"
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:text="Restaurar"
+		android:text="HARDWARE IMEI RESTAURAR"
 		android:background="#BC382F"/>
 
 	<TextView
 		android:layout_height="wrap_content"
-		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:layout_width="wrap_content"
-		android:text="Esta app permite copiar y restablecer la partición NVRAM (IMEI, MAC del WiFi y del Bluetooth)."/>
+		android:text="Esta app permite copiar y restablecer la partición NVRAM y NVDATA (IMEI, MAC del WiFi y del Bluetooth)."/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="Por favor asegurese que los dos archivos 'nvram-ax1030.img' (5 MB) y 'nvdata-ax1030.img' (32 MB) se encuentre en la raíz de la memoria /sdcard"
+		android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="wrap_content"
+		android:text="Unicamente para Bmobile AX1030, otros modelos no probados."/>
 
 	<TextView
 		android:layout_height="wrap_content"
 		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:layout_width="wrap_content"
-		android:text="Unicamente para Bmobile AX1030, otros modelos no testeados. Me reservo el derecho de ignorar a otros modelos."/>
+		android:layout_width="match_parent"
+		android:text="PRECAUCIÓN"
+		android:gravity="center_horizontal"/>
 
 	<TextView
-		android:layout_height="wrap_content"
+		android:layout_height="match_parent"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:layout_width="wrap_content"
-		android:text="Por favor asegurese que el archivo 'nvram-ax1030.img' se encuentre en la raíz de la memoria principal /sdcard"/>
+		android:text="No presione el botón RESTAURAR dos veces seguidas, si lo hace el imei no se restaurará. Reinicie inmediatamente despues de restaurar. Puede que no se restaure a la primer vez. Reinicie y vuelva a intentar."
+		android:shadowColor="#000000"
+		android:gravity="center_horizontal"/>
 
 </LinearLayout>
 

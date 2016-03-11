@@ -15,27 +15,40 @@ import java.io.*;public class MainActivity extends Activity
         setContentView(R.layout.main);
     }
 	
-	public void onCopiarButtonClick(View view) 
+	public void onCopiarNVRAMButtonClick(View view) 
     {
-    	// This Java code shows a toast
+    	// Copia la NVRAM (Hardware IMEI)
 		try {
+			// Comando antiguo, archivado para la historia.
+			Runtime.getRuntime().exec("su -c dd if=/dev/block/mmcblk0p18 of=/sdcard/nvdata-ax1030.img count=1 bs=33554432");
+			// Copiar Hardware IMEI
 			Runtime.getRuntime().exec("su -c dd if=/dev/block/mmcblk0p2 of=/sdcard/nvram-ax1030.img count=1 bs=5242880");
 		} catch (IOException e) {
 		} 
-    	Toast.makeText(this, "Copiado a /sdcard/nvram-ax1030.img con éxito", Toast.LENGTH_SHORT).show();
+    	Toast.makeText(this, "Hardware IMEI copiado a /sdcard/nv-ax1030.img con éxito", Toast.LENGTH_SHORT).show();
 	}
 	
-	public void onRestaurarButtonClick(View view) 
+	public void onRestaurarNVRAMButtonClick(View view) 
     {
-    	// This Java code shows a toast
+    	// Restaurar NVRAM
 		try {
+			// Limpieza de los archivos de SOFT IMEI generados corruptamente.
+			Runtime.getRuntime().exec("su -c rm -r /nvdata/*");
+			Runtime.getRuntime().exec("su -c rm /data/nvram");
+			// Runtime.getRuntime().exec("su -c rmdir /nvdata/*");
+			// NVRAM CORRUPTO GENERADO POR EL SISTEMA EN folder /data/nvram
+			Runtime.getRuntime().exec("su -c rm -r /data/nvram/*");
+			Runtime.getRuntime().exec("su -c rmdir /data/nvram");
+			// COMANDO PARA LA HISTORIA
+			Runtime.getRuntime().exec("su -c dd if=/sdcard/nvdata-ax1030.img of=/dev/block/mmcblk0p18");
+			// Flashear region binaria a la particion No. 18, que el ax1030 esta el Hardware IMEI.
 			Runtime.getRuntime().exec("su -c dd if=/sdcard/nvram-ax1030.img of=/dev/block/mmcblk0p2");
 		} catch (IOException e) {
 		} 
-    	Toast.makeText(this, "Restaurado desde /sdcard/nvram-ax1030.img con éxito", Toast.LENGTH_SHORT).show();
+    	Toast.makeText(this, "Hardware IMEI Restaurado desde /sdcard/nvram-ax1030.img con éxito", Toast.LENGTH_SHORT).show();
 	}
 	
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
